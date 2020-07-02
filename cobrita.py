@@ -6,15 +6,22 @@ import time
 try:
     arquivo = open("jogologing.txt","a")
     nome = input("Digite seu nome: ")
+    arquivo.write("\n")
+    arquivo.write("======================================== \n")
+    arquivo.write("              NOVO JOGADOR               \n")
+    arquivo.write("======================================== \n")
     arquivo.write("Jogador: ")
     arquivo.write(nome)
     arquivo.write("\n")
-    gameloop()
     arquivo.close()
+    gameloop()
 
-        
 except:
     print("Algo deu errado :O")
+
+        
+
+
 
 
 
