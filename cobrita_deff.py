@@ -44,8 +44,9 @@ def text_objects(text,font):
 def salva_pontos(pontuacao):
     arquivo = open("jogologing.txt", "a")
     arquivo.write("pontuacao: ")
-    arquivo.write(pontuacao)
+    arquivo.write(str(pontuacao))
     arquivo.write("\n")
+    print(pontuacao)
 
 
 def gameloop():
@@ -69,8 +70,9 @@ def gameloop():
     maca_pos = macalocal()
     maca = pygame.Surface((10,10))
     maca.fill((255,0,0))
-    my_direction = LEFT
+    my_direction = RIGHT
     pontuacao = 0
+    
 
     while True:
         clock.tick(20)
@@ -80,16 +82,28 @@ def gameloop():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    my_direction = UP
+                    if my_direction == DOWN:
+                        pass
+                    else:
+                        my_direction = UP
 
                 elif event.key ==  pygame.K_DOWN:
-                    my_direction = DOWN
+                    if my_direction == UP:
+                        pass
+                    else:
+                        my_direction = DOWN
 
                 elif event.key ==  pygame.K_LEFT:
-                    my_direction = LEFT
+                    if my_direction == RIGHT:
+                        pass
+                    else:
+                        my_direction = LEFT
 
                 elif event.key ==  pygame.K_RIGHT:
-                    my_direction = RIGHT
+                    if my_direction == LEFT:
+                        pass
+                    else:
+                        my_direction = RIGHT
 
         if collision(cobrao[0], maca_pos):
             maca_pos = macalocal()
@@ -98,9 +112,17 @@ def gameloop():
 
 
         if cobrao[0][0] == 600 or cobrao[0][1] == 600 or cobrao[0][0] < 0 or cobrao[0][1] < 0:
-            #salva_pontos(pontuacao)
+            salva_pontos(pontuacao)
             morte()
             gameloop()     
+
+        for l in range(1, len(cobrao) - 1):
+            if cobrao[0][0] == cobrao[l][0] and cobrao[0][1] == cobrao[l][1]:
+                salva_pontos(pontuacao)
+                morte()
+                gameloop()     
+
+
 
         for i in range(len(cobrao) - 1, 0, -1):
             cobrao[i] = (cobrao[i-1][0], cobrao[i-1][1])
