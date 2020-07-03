@@ -72,10 +72,11 @@ def gameloop():
     maca.fill((255,0,0))
     my_direction = RIGHT
     pontuacao = 0
+    tempo = 20
     
 
     while True:
-        clock.tick(20)
+        clock.tick(tempo)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -110,11 +111,29 @@ def gameloop():
             cobrao.append((0,0))
             pontuacao = pontuacao + 1
 
-
+            if pontuacao == 5:
+                tempo = tempo = 25
+            else:
+                pass
+            if pontuacao == 10:
+                tempo = tempo = 30
+            else: 
+                pass
+            if pontuacao == 20:
+                tempo = tempo  = 35
+            else:
+                pass
+            if pontuacao == 30:
+                tempo = tempo = 40
+            else:
+                pass
+            
         if cobrao[0][0] == 600 or cobrao[0][1] == 600 or cobrao[0][0] < 0 or cobrao[0][1] < 0:
             salva_pontos(pontuacao)
             morte()
             gameloop()     
+        else:
+            pass
 
         for l in range(1, len(cobrao) - 1):
             if cobrao[0][0] == cobrao[l][0] and cobrao[0][1] == cobrao[l][1]:
