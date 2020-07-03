@@ -5,3 +5,5 @@ tá ai, implementei o código do cara junto com os ensinamentos quem em aula o P
 
 Aluno: lucas silva rocha
 e-mail: Safiepan123@hotmail.com
+Trabalho atualizado 03/jul 11 horas
+adic de "fases"
