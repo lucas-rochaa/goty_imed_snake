@@ -19,9 +19,6 @@ try:
 except:
     print("Algo deu errado :O")
 
-        
-
-
 
 
 
